@@ -1,6 +1,6 @@
-# Robust X 網站初版
+# Robust X 網站 — Minimalist Dark 改版
 
-本版以使用者提供的 High-Fidelity Claymorphism 設計系統製作，採無建置流程的 HTML、CSS、JavaScript。
+本版依第二份 Minimalist Dark prompt 重製：三層石墨灰、琥珀點綴、Space Grotesk / Inter 字體、夜間攝影與左右交錯產品版面。採無建置流程的 HTML、CSS、JavaScript。第一版素材保留供比較，不再由目前頁面引用。
 
 ## 預覽
 
@@ -10,7 +10,8 @@
 
 - `dist/index.html`：首頁文案、兩大產品、互動示範、聯繫入口。
 - `dist/journey.html`：歷程與團隊頁。
-- `dist/styles.css`：集中定義色彩、陰影、字體、圓角與響應式樣式。
+- `dist/dark.css`：目前使用的設計 token、排版、響應式與互動樣式。
+- `dist/styles.css`：保留的第一版黏土風樣式，目前未載入。
 - `dist/app.js`：行動導覽、產品頁籤、時段示意及居家情境切換。
 - `dist/history-source.md`：原始整理文件的可下載副本。
 - `dist/assets/connected-city.png`：首頁主視覺。
@@ -23,13 +24,17 @@
 
 ## 設計方向
 
-主標：讓智慧，融入每一天。
+主標：理解城市的流動。照顧生活的日常。
 
 交通產品：讀懂車流，看見城市的節奏。
 
 居家產品：讓家的溫度，剛好是你喜歡的樣子。
 
-繁體中文字體補入 Noto Sans TC，英文標題採 Nunito，內文採 DM Sans。Google Fonts 無法載入時回退系統 sans-serif。支援鍵盤頁籤、焦點樣式、減少動態效果設定與手機導覽。
+繁體中文字體採 Noto Sans TC，英文標題採 Space Grotesk，內文採 Inter，標籤採 JetBrains Mono。Google Fonts 無法載入時回退系統字體。支援鍵盤頁籤、琥珀焦點樣式、減少動態效果設定與手機導覽。
+
+### 第二版首頁素材：dist/assets/city-night.jpg
+
+由內建 ImageGen 生成，保留第一版圖片。提示詞：Use case: photorealistic-natural. Wide cinematic 16:9 architectural photograph for premium Taiwanese traffic technology company. Elevated view of a beautifully engineered curving urban road interchange at blue hour approaching night, road curves leading from lower left toward distant city skyline at right, very dark graphite sky and shadowed architectural mass, restrained warm amber streetlights and subtle long exposure vehicle light trails. Sophisticated authentic editorial photography, analog film texture, realistic roads, quiet composition, substantial negative dark space across upper left, muted charcoal slate palette and only warm golden light, no neon blue, no purple, no sci-fi, no holograms, no UI, no text, no logos. Photographic not illustration. Full bleed landscape.
 
 ## 圖像產生
 
