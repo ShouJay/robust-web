@@ -1,11 +1,16 @@
 const menu = document.querySelector('.menu-toggle');
-menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'收合選單':'展開選單');document.querySelector('#navigation').classList.toggle('open',open)});
-document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{document.querySelector('#navigation').classList.remove('open');menu?.setAttribute('aria-expanded','false')}));
-function selectTab(name){document.querySelectorAll('[data-tab]').forEach(button=>{const selected=button.dataset.tab===name;button.setAttribute('aria-selected',String(selected));button.tabIndex=selected?0:-1;document.querySelector('#panel-'+button.dataset.tab).hidden=!selected})}
-document.querySelectorAll('[data-tab]').forEach(button=>{button.addEventListener('click',()=>selectTab(button.dataset.tab));button.addEventListener('keydown',event=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){event.preventDefault();const name=event.key==='Home'?'traffic':event.key==='End'?'home':button.dataset.tab==='traffic'?'home':'traffic';selectTab(name);document.querySelector('#tab-'+name).focus()}})});
-document.querySelectorAll('[data-select]').forEach(link=>link.addEventListener('click',()=>selectTab(link.dataset.select)));
-const periods={morning:{count:'1,248',type:'汽車',start:'08:00',end:'09:00',bars:[42,58,51,78,94,70,83,60,49]},noon:{count:'682',type:'機車',start:'12:00',end:'13:00',bars:[32,41,35,47,56,42,51,38,30]},evening:{count:'1,576',type:'汽車',start:'17:00',end:'18:00',bars:[62,75,65,86,98,89,93,75,68]}};
-document.querySelector('#traffic-period')?.addEventListener('change',event=>{const data=periods[event.target.value];document.querySelector('#vehicle-count').innerHTML=data.count+' <em>輛</em>';document.querySelector('#vehicle-type').textContent=data.type;document.querySelector('#chart-start').textContent=data.start;document.querySelector('#chart-end').textContent=data.end;document.querySelectorAll('.chart>div').forEach((bar,i)=>bar.style.setProperty('--bar',data.bars[i]+'%'))});
-const scenes={welcome:{title:'歡迎回家。',light:'75%',mood:'溫暖放鬆'},focus:{title:'留一點空間，給專注。',light:'100%',mood:'明亮清晰'},sleep:{title:'晚安，讓生活慢下來。',light:'15%',mood:'柔和休息'}};
-document.querySelectorAll('[data-scene].scene').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.scene').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button))});const data=scenes[button.dataset.scene];document.querySelector('.home-dashboard').dataset.scene=button.dataset.scene;document.querySelector('#scene-title').textContent=data.title;document.querySelector('#light-value').textContent=data.light;document.querySelector('#mood-value').textContent=data.mood}));
-document.querySelectorAll('#current-year').forEach(el=>el.textContent=new Date().getFullYear());
+const navigation = document.querySelector('#navigation');
+function setMenu(open) {
+  menu?.setAttribute('aria-expanded', String(open));
+  menu?.setAttribute('aria-label', open ? '收合選單' : '展開選單');
+  navigation?.classList.toggle('open', open);
+}
+menu?.addEventListener('click', () => setMenu(menu.getAttribute('aria-expanded') !== 'true'));
+document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && menu?.getAttribute('aria-expanded') === 'true') {
+    setMenu(false);
+    menu.focus();
+  }
+});
+document.querySelectorAll('#current-year').forEach(el => el.textContent = new Date().getFullYear());

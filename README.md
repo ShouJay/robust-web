@@ -1,36 +1,45 @@
-# Robust X 網站 — Minimalist Dark 改版
+# 羅伯斯特 Robust X 官網
 
-本版依第二份 Minimalist Dark prompt 重製：三層石墨灰、琥珀點綴、Space Grotesk / Inter 字體、夜間攝影與左右交錯產品版面。採無建置流程的 HTML、CSS、JavaScript。第一版素材保留供比較，不再由目前頁面引用。
+2026-10-20 依「交付成果／官網文字稿與製作註記.md」更新。保留石墨灰與琥珀色視覺，使用 HTML、CSS、JavaScript，無建置依賴。
 
-## 預覽
+## 頁面與內容
 
-在此目錄執行 `python3 -m http.server 4173 --directory dist`，瀏覽 http://localhost:4173。
+- `dist/index.html`：首頁、Street Eye 介紹、2026 桃園交通調查計畫、聯絡入口。
+- `dist/journey.html`：公司介紹、核心團隊、服務能力、政府計畫、合作夥伴及 30 筆競賽成果。
+- `dist/traffic.html`：交通轉向量與六項成果、MOT／Re-ID 技術、連續影格、服務流程、實績及常見問題。
+- `dist/dark.css`：原有品牌版型。
+- `dist/content.css`：本次內容頁與響應式版型。
+- `dist/app.js`：手機選單、Escape 收合、頁尾年份。
+- `dist/assets/street-eye/`：15 張交付圖片，保留原始解析度與圖例，可從頁面開啟原圖。
 
-## 編輯位置
+製作交接註記不作為公開文案。智慧居家與 AI 專案的基本底稿未製作公開頁面。過時的公開歷程下載文件已移除，舊版本仍保留於 Git 歷史。城市夜景為形象示意；實際分析圖均標示為示例。聯繫透過 mailto 與電話連結，沒有後端收件表單。
 
-- `dist/index.html`：首頁文案、兩大產品、互動示範、聯繫入口。
-- `dist/journey.html`：歷程與團隊頁。
-- `dist/dark.css`：目前使用的設計 token、排版、響應式與互動樣式。
-- `dist/styles.css`：保留的第一版黏土風樣式，目前未載入。
-- `dist/app.js`：行動導覽、產品頁籤、時段示意及居家情境切換。
-- `dist/history-source.md`：原始整理文件的可下載副本。
-- `dist/assets/connected-city.png`：首頁主視覺。
-- `dist/assets/traffic.jpg`：交通產品情境圖。
-- `dist/assets/home.jpg`：居家產品情境圖。
+## 本機預覽
 
-將同名圖片替換即可更新畫面；替換時同步調整 HTML 的 alt 說明。人物目前以姓名縮寫作為頭像，可換成真實照片。
+在 `site` 目錄執行：
 
-產品文案是設計提案，實際支援設備、功能與部署條件需後續確認。車流數字與居家模式為瀏覽器內示範；聯繫按鈕使用 mailto 開啟使用者的郵件軟體，沒有後端表單或裝置連線。
+```sh
+python3 -m http.server 4173 --bind 127.0.0.1 --directory dist
+```
 
-## 設計方向
+開啟 http://127.0.0.1:4173 。
 
-主標：理解城市的流動。照顧生活的日常。
+## GitHub Pages 部署
 
-交通產品：讀懂車流，看見城市的節奏。
+Git 儲存庫根目錄為 `site`，不是其上一層 `Robust-web`。部署工作流程位於 `.github/workflows/pages.yml`，推送 `main` 後會把 `dist` 發布至 GitHub Pages，也支援手動觸發。
 
-居家產品：讓家的溫度，剛好是你喜歡的樣子。
+首次部署需完成 GitHub 登入、建立或指定儲存庫、設定 Git remote，並在 GitHub 儲存庫 Settings → Pages → Build and deployment 選擇 GitHub Actions。工作流程依 [GitHub 官方說明](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages) 設定。
 
-繁體中文字體採 Noto Sans TC，英文標題採 Space Grotesk，內文採 Inter，標籤採 JetBrains Mono。Google Fonts 無法載入時回退系統字體。支援鍵盤頁籤、琥珀焦點樣式、減少動態效果設定與手機導覽。
+目前僅完成本機網站與部署設定；尚未建立 GitHub 遠端、上傳或驗證公開網址。既有 `.openai/hosting.json` 保留原站識別，本次未對該託管服務發布。
+
+## 驗證
+
+- 三頁的本機連結、圖片檔案、頁內錨點及唯一 H1 檢查通過。
+- JavaScript 語法與 Git diff 空白檢查通過。
+- 瀏覽器檢查桌面首頁及 390px 手機版；三頁沒有橫向溢出。
+- 手機選單連往交通頁與 FAQ 展開驗證通過。
+
+## 舊版形象圖片紀錄
 
 ### 第二版首頁素材：dist/assets/city-night.jpg
 
