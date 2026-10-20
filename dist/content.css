@@ -10,70 +10,75 @@
 @media(max-width:1000px){.feature-split{gap:35px}.cards.four{grid-template-columns:1fr 1fr}.service-hero{grid-template-columns:1fr;gap:35px}.service-hero .evidence{max-width:900px}.service-hero h1 br:nth-child(2){display:none}.case-number strong{font-size:80px}}
 @media(max-width:700px){.hero-lead{max-width:100%;font-size:14px}.hero{min-height:740px}.actions{flex-wrap:wrap;gap:20px}.feature-split,.columns,.case-band,.cards,.cards.four,.results-grid,.report-gallery,.sequence{grid-template-columns:1fr}.feature-split{gap:30px}.columns{gap:22px}.case-band{gap:30px;padding:35px 22px}.case-band h2{font-size:28px}.case-number{align-items:flex-start}.case-number strong{font-size:80px}.cards{gap:16px}.intro{margin-bottom:25px}.prose h3{font-size:24px}.prose h2{font-size:25px}.prose p{font-size:14px}.service-hero{padding-block:55px 45px}.service-hero h1{font-size:34px;letter-spacing:-1px}.service-hero h1 br:nth-child(2){display:initial}.analysis-flow{flex-direction:column;gap:12px;align-items:flex-start}.analysis-flow b{transform:rotate(90deg)}.result-card{padding:22px}.result-card h3{font-size:23px}.contact-details{flex-direction:column;align-items:flex-start}.contact-details a{font-size:14px}.faq summary{font-size:16px}.compact{padding-top:25px}.section-heading{margin-bottom:35px}}
 
-/* Feature layout for analysis 05 and 06: their source images have very different ratios. */
+/* Analysis 05 and 06 each contain two related views. */
 .results-grid .result-card:nth-child(5),
 .results-grid .result-card:nth-child(6){
   grid-column:1/-1;
   display:grid;
-  grid-template-columns:minmax(0,1.3fr) minmax(320px,.7fr);
-  grid-template-rows:auto auto 1fr;
-  min-height:500px;
-  padding:0;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  grid-template-rows:auto auto auto auto;
+  gap:0 20px;
+  min-height:0;
+  padding:36px;
   overflow:hidden;
   background:linear-gradient(135deg,#17171f 0%,var(--surface) 70%);
 }
 .results-grid .result-card:nth-child(5)>.eyebrow,
+.results-grid .result-card:nth-child(6)>.eyebrow{
+  grid-column:1/-1;
+  grid-row:1;
+  margin:0 0 16px;
+}
 .results-grid .result-card:nth-child(5)>h3,
-.results-grid .result-card:nth-child(5)>p{grid-column:2}
-.results-grid .result-card:nth-child(6)>.eyebrow,
-.results-grid .result-card:nth-child(6)>h3,
-.results-grid .result-card:nth-child(6)>p{grid-column:1}
-.results-grid .result-card:nth-child(5)>.eyebrow,
-.results-grid .result-card:nth-child(6)>.eyebrow{grid-row:1;margin:52px 52px 18px}
-.results-grid .result-card:nth-child(5)>h3,
-.results-grid .result-card:nth-child(6)>h3{grid-row:2;margin:0 52px;font-size:30px;line-height:1.45}
+.results-grid .result-card:nth-child(6)>h3{
+  grid-column:1/-1;
+  grid-row:2;
+  margin:0;
+  font-size:30px;
+  line-height:1.45;
+}
 .results-grid .result-card:nth-child(5)>p:not(.eyebrow),
-.results-grid .result-card:nth-child(6)>p:not(.eyebrow){grid-row:3;margin:18px 52px 52px;align-self:start;font-size:15px}
+.results-grid .result-card:nth-child(6)>p:not(.eyebrow){
+  grid-column:1/-1;
+  grid-row:3;
+  max-width:780px;
+  margin:16px 0 30px;
+  font-size:15px;
+}
 .results-grid .result-card:nth-child(5)>.evidence,
 .results-grid .result-card:nth-child(6)>.evidence{
-  grid-row:1/4;
-  display:flex;
-  flex-direction:column;
-  min-height:500px;
+  grid-column:1;
+  grid-row:4;
+  min-height:0;
   margin:0;
-  border:0;
-  border-radius:0;
-  background:#0c0c12;
 }
-.results-grid .result-card:nth-child(5)>.evidence{grid-column:1;border-right:1px solid var(--border)}
-.results-grid .result-card:nth-child(6)>.evidence{grid-column:2;border-left:1px solid var(--border)}
-.results-grid .result-card:nth-child(5)>.evidence a,
-.results-grid .result-card:nth-child(6)>.evidence a{flex:1;min-height:0}
-.results-grid .result-card:nth-child(5)>.evidence img,
-.results-grid .result-card:nth-child(6)>.evidence img{height:100%;object-fit:cover}
-.results-grid .result-card:nth-child(6)>.evidence img{object-position:center top}
-.results-grid .result-card:nth-child(5)>.evidence figcaption,
-.results-grid .result-card:nth-child(6)>.evidence figcaption{padding:16px 20px;background:#101016}
+.results-grid .result-card:nth-child(5)>.evidence-secondary,
+.results-grid .result-card:nth-child(6)>.evidence-secondary{
+  grid-column:2;
+  grid-row:4;
+  min-width:0;
+}
+.evidence-secondary>.evidence{height:100%;margin:0}
+.results-grid .result-card:nth-child(5) .evidence img,
+.results-grid .result-card:nth-child(6) .evidence img{
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
 
 @media(max-width:1000px){
   .results-grid .result-card:nth-child(5),
-  .results-grid .result-card:nth-child(6){grid-template-columns:1fr;min-height:0}
-  .results-grid .result-card:nth-child(5)>.eyebrow,
-  .results-grid .result-card:nth-child(6)>.eyebrow{grid-column:1;grid-row:1;margin:36px 36px 16px}
-  .results-grid .result-card:nth-child(5)>h3,
-  .results-grid .result-card:nth-child(6)>h3{grid-column:1;grid-row:2;margin:0 36px}
-  .results-grid .result-card:nth-child(5)>p:not(.eyebrow),
-  .results-grid .result-card:nth-child(6)>p:not(.eyebrow){grid-column:1;grid-row:3;margin:16px 36px 32px}
-  .results-grid .result-card:nth-child(5)>.evidence,
-  .results-grid .result-card:nth-child(6)>.evidence{grid-column:1;grid-row:4;min-height:0;border:0;border-top:1px solid var(--border)}
-  .results-grid .result-card:nth-child(5)>.evidence img,
-  .results-grid .result-card:nth-child(6)>.evidence img{height:auto;object-fit:contain}
+  .results-grid .result-card:nth-child(6){padding:30px}
 }
 @media(max-width:700px){
-  .results-grid .result-card:nth-child(5)>.eyebrow,
-  .results-grid .result-card:nth-child(6)>.eyebrow{margin:28px 22px 14px}
+  .results-grid .result-card:nth-child(5),
+  .results-grid .result-card:nth-child(6){grid-template-columns:1fr;gap:18px;padding:22px}
   .results-grid .result-card:nth-child(5)>h3,
-  .results-grid .result-card:nth-child(6)>h3{margin:0 22px;font-size:24px}
+  .results-grid .result-card:nth-child(6)>h3{font-size:24px}
   .results-grid .result-card:nth-child(5)>p:not(.eyebrow),
-  .results-grid .result-card:nth-child(6)>p:not(.eyebrow){margin:14px 22px 24px;font-size:14px}
+  .results-grid .result-card:nth-child(6)>p:not(.eyebrow){margin:0 0 6px;font-size:14px}
+  .results-grid .result-card:nth-child(5)>.evidence,
+  .results-grid .result-card:nth-child(6)>.evidence{grid-column:1;grid-row:4}
+  .results-grid .result-card:nth-child(5)>.evidence-secondary,
+  .results-grid .result-card:nth-child(6)>.evidence-secondary{grid-column:1;grid-row:5}
 }
