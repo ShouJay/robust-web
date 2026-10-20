@@ -9,3 +9,71 @@
 .service-hero{padding-block:90px 70px;grid-template-columns:1fr 1fr;gap:45px}.service-hero h1{font-size:clamp(32px,3.7vw,52px);line-height:1.5;font-weight:500;letter-spacing:-1.5px}.service-label{font-size:14px;color:var(--muted);margin-top:25px}.service-hero .eyebrow{font-size:9px}.analysis-flow{display:flex;gap:20px;align-items:center;justify-content:space-between;background:var(--raised);padding:28px;margin-top:45px;border-radius:10px}.analysis-flow span{font-size:14px}.analysis-flow b{color:var(--accent)}.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}.result-card{padding:28px;background:var(--surface);border:1px solid var(--border);border-radius:12px;display:flex;flex-direction:column;align-items:stretch}.result-card h3{font-size:24px;font-weight:500}.result-card>p:not(.eyebrow){color:var(--muted);font-size:14px;margin:18px 0 28px;line-height:2}.result-card .evidence{margin-top:auto}.report-gallery{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:28px;align-items:start}.tracking-comparison{margin-top:55px}.tracking-comparison h3{font-size:18px;font-weight:500;margin:30px 0 20px}.sequence{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.tracking-comparison>p{font-size:13px;margin-top:25px}.surface{background:var(--surface);border-block:1px solid var(--border)}.comparison{margin-top:45px;border-top:1px solid var(--border);padding-top:35px}.development{margin-top:36px}.development p:nth-child(odd){color:var(--accent)}.faq details{border-bottom:1px solid var(--border);padding:22px 0}.faq summary{cursor:pointer;font-size:18px;min-height:44px;padding:7px 0}.faq summary:focus-visible{outline:2px solid var(--accent);outline-offset:5px}.faq details p{color:var(--muted);margin-top:15px;max-width:850px;font-size:15px;line-height:2}
 @media(max-width:1000px){.feature-split{gap:35px}.cards.four{grid-template-columns:1fr 1fr}.service-hero{grid-template-columns:1fr;gap:35px}.service-hero .evidence{max-width:900px}.service-hero h1 br:nth-child(2){display:none}.case-number strong{font-size:80px}}
 @media(max-width:700px){.hero-lead{max-width:100%;font-size:14px}.hero{min-height:740px}.actions{flex-wrap:wrap;gap:20px}.feature-split,.columns,.case-band,.cards,.cards.four,.results-grid,.report-gallery,.sequence{grid-template-columns:1fr}.feature-split{gap:30px}.columns{gap:22px}.case-band{gap:30px;padding:35px 22px}.case-band h2{font-size:28px}.case-number{align-items:flex-start}.case-number strong{font-size:80px}.cards{gap:16px}.intro{margin-bottom:25px}.prose h3{font-size:24px}.prose h2{font-size:25px}.prose p{font-size:14px}.service-hero{padding-block:55px 45px}.service-hero h1{font-size:34px;letter-spacing:-1px}.service-hero h1 br:nth-child(2){display:initial}.analysis-flow{flex-direction:column;gap:12px;align-items:flex-start}.analysis-flow b{transform:rotate(90deg)}.result-card{padding:22px}.result-card h3{font-size:23px}.contact-details{flex-direction:column;align-items:flex-start}.contact-details a{font-size:14px}.faq summary{font-size:16px}.compact{padding-top:25px}.section-heading{margin-bottom:35px}}
+
+/* Feature layout for analysis 05 and 06: their source images have very different ratios. */
+.results-grid .result-card:nth-child(5),
+.results-grid .result-card:nth-child(6){
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:minmax(0,1.3fr) minmax(320px,.7fr);
+  grid-template-rows:auto auto 1fr;
+  min-height:500px;
+  padding:0;
+  overflow:hidden;
+  background:linear-gradient(135deg,#17171f 0%,var(--surface) 70%);
+}
+.results-grid .result-card:nth-child(5)>.eyebrow,
+.results-grid .result-card:nth-child(5)>h3,
+.results-grid .result-card:nth-child(5)>p{grid-column:2}
+.results-grid .result-card:nth-child(6)>.eyebrow,
+.results-grid .result-card:nth-child(6)>h3,
+.results-grid .result-card:nth-child(6)>p{grid-column:1}
+.results-grid .result-card:nth-child(5)>.eyebrow,
+.results-grid .result-card:nth-child(6)>.eyebrow{grid-row:1;margin:52px 52px 18px}
+.results-grid .result-card:nth-child(5)>h3,
+.results-grid .result-card:nth-child(6)>h3{grid-row:2;margin:0 52px;font-size:30px;line-height:1.45}
+.results-grid .result-card:nth-child(5)>p:not(.eyebrow),
+.results-grid .result-card:nth-child(6)>p:not(.eyebrow){grid-row:3;margin:18px 52px 52px;align-self:start;font-size:15px}
+.results-grid .result-card:nth-child(5)>.evidence,
+.results-grid .result-card:nth-child(6)>.evidence{
+  grid-row:1/4;
+  display:flex;
+  flex-direction:column;
+  min-height:500px;
+  margin:0;
+  border:0;
+  border-radius:0;
+  background:#0c0c12;
+}
+.results-grid .result-card:nth-child(5)>.evidence{grid-column:1;border-right:1px solid var(--border)}
+.results-grid .result-card:nth-child(6)>.evidence{grid-column:2;border-left:1px solid var(--border)}
+.results-grid .result-card:nth-child(5)>.evidence a,
+.results-grid .result-card:nth-child(6)>.evidence a{flex:1;min-height:0}
+.results-grid .result-card:nth-child(5)>.evidence img,
+.results-grid .result-card:nth-child(6)>.evidence img{height:100%;object-fit:cover}
+.results-grid .result-card:nth-child(6)>.evidence img{object-position:center top}
+.results-grid .result-card:nth-child(5)>.evidence figcaption,
+.results-grid .result-card:nth-child(6)>.evidence figcaption{padding:16px 20px;background:#101016}
+
+@media(max-width:1000px){
+  .results-grid .result-card:nth-child(5),
+  .results-grid .result-card:nth-child(6){grid-template-columns:1fr;min-height:0}
+  .results-grid .result-card:nth-child(5)>.eyebrow,
+  .results-grid .result-card:nth-child(6)>.eyebrow{grid-column:1;grid-row:1;margin:36px 36px 16px}
+  .results-grid .result-card:nth-child(5)>h3,
+  .results-grid .result-card:nth-child(6)>h3{grid-column:1;grid-row:2;margin:0 36px}
+  .results-grid .result-card:nth-child(5)>p:not(.eyebrow),
+  .results-grid .result-card:nth-child(6)>p:not(.eyebrow){grid-column:1;grid-row:3;margin:16px 36px 32px}
+  .results-grid .result-card:nth-child(5)>.evidence,
+  .results-grid .result-card:nth-child(6)>.evidence{grid-column:1;grid-row:4;min-height:0;border:0;border-top:1px solid var(--border)}
+  .results-grid .result-card:nth-child(5)>.evidence img,
+  .results-grid .result-card:nth-child(6)>.evidence img{height:auto;object-fit:contain}
+}
+@media(max-width:700px){
+  .results-grid .result-card:nth-child(5)>.eyebrow,
+  .results-grid .result-card:nth-child(6)>.eyebrow{margin:28px 22px 14px}
+  .results-grid .result-card:nth-child(5)>h3,
+  .results-grid .result-card:nth-child(6)>h3{margin:0 22px;font-size:24px}
+  .results-grid .result-card:nth-child(5)>p:not(.eyebrow),
+  .results-grid .result-card:nth-child(6)>p:not(.eyebrow){margin:14px 22px 24px;font-size:14px}
+}
