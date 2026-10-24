@@ -84,15 +84,101 @@
 }
 
 /* Supplied brand assets: Robust in site chrome, partner marks in the company profile. */
-.nav-wrap{background:#f4f1eb;border-bottom-color:#d9d3c9;box-shadow:0 1px 0 #0000000d}
-.brand{flex:0 0 auto}
-.brand img{width:118px;height:auto;object-fit:contain}
-.nav-wrap .nav-links{color:#4b4742}
-.nav-wrap .nav-links a:hover,.nav-wrap .nav-links [aria-current=page]{color:#a05d00}
-.nav-wrap .nav-cta{color:#25221f;border-color:#25221f40;background:#ffffff73}
-.nav-wrap .nav-cta:hover{color:#fff;background:#25221f;border-color:#25221f}
-.nav-wrap .menu-toggle{color:#25221f}
-.footer .brand img{width:112px}
+.nav-wrap{
+  position:relative;
+  background:linear-gradient(90deg,#f7f4ee 0%,#f1ede5 100%);
+  border-bottom:0;
+  box-shadow:0 10px 30px #00000017;
+}
+.nav-wrap::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0;
+  height:3px;
+  background:linear-gradient(90deg,transparent 4%,#f59e0b 28%,#f59e0b 72%,transparent 96%);
+  opacity:.85;
+}
+.nav{height:108px}
+.brand{flex:0 0 auto;position:relative}
+.nav-wrap .brand::after{
+  content:"";
+  width:1px;
+  height:32px;
+  margin-left:24px;
+  background:linear-gradient(transparent,#f59e0b,transparent);
+}
+.brand img{width:142px;height:auto;object-fit:contain}
+.nav-wrap .nav-links{gap:28px;color:#484039}
+.nav-wrap .nav-links a{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:14px 12px 13px;
+  border-radius:7px;
+  font-weight:600;
+  letter-spacing:.06em;
+  transition:color .2s ease,background .2s ease;
+}
+.nav-wrap .nav-links a::before{
+  color:#c87500;
+  font:600 8px/1 var(--mono);
+  letter-spacing:.08em;
+}
+.nav-wrap .nav-links a:nth-child(1)::before{content:"01"}
+.nav-wrap .nav-links a:nth-child(2)::before{content:"02"}
+.nav-wrap .nav-links a:nth-child(3)::before{content:"03"}
+.nav-wrap .nav-links a::after{
+  content:"";
+  position:absolute;
+  right:12px;
+  bottom:7px;
+  left:12px;
+  height:1px;
+  background:#f59e0b;
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .2s ease;
+}
+.nav-wrap .nav-links a:hover,
+.nav-wrap .nav-links [aria-current=page]{color:#9b5a00;background:#f59e0b10}
+.nav-wrap .nav-links a:hover::after,
+.nav-wrap .nav-links [aria-current=page]::after{transform:scaleX(1)}
+.nav-wrap .nav-cta{
+  color:#29241f;
+  border-color:#d1882066;
+  background:#fff;
+  box-shadow:0 7px 20px #6e4a1814;
+}
+.nav-wrap .nav-cta span{color:#b76800}
+.nav-wrap .nav-cta:hover{
+  color:#17130f;
+  background:#f59e0b;
+  border-color:#f59e0b;
+  box-shadow:0 9px 24px #b66e1c33;
+}
+.nav-wrap .nav-cta:hover span{color:#17130f}
+.nav-wrap .menu-toggle{color:#29241f}
+.footer{
+  position:relative;
+  padding-block:48px 50px;
+  color:#29241f;
+  background:#f4f1eb;
+  border-top:0;
+  box-shadow:0 0 0 100vmax #f4f1eb;
+  clip-path:inset(0 -100vmax);
+}
+.footer::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto;
+  height:3px;
+  background:linear-gradient(90deg,transparent,#f59e0b,transparent);
+}
+.footer .brand img{width:132px}
+.footer p{color:#6f675f;letter-spacing:.04em}
+.footer>a:last-child{color:#a05d00;font-weight:600;letter-spacing:.08em}
+.footer>a:last-child:hover{color:#d47b00}
 .partner-list{display:grid;grid-template-columns:repeat(3,minmax(110px,1fr));gap:14px;margin-top:25px;width:100%;min-width:0}
 .partner-card{width:100%;height:140px;min-width:0;padding:20px;border:1px solid #ded9d0;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .partner-card img{display:block;width:auto!important;max-width:148px!important;height:64px!important;max-height:64px!important;object-fit:contain!important;transform:none}
@@ -101,9 +187,23 @@
 .timeline-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
 .timeline-links a{color:var(--accent);text-decoration:underline;text-underline-offset:4px}
 
+@media(min-width:701px) and (max-width:900px){
+  .brand img{width:128px}
+  .nav{gap:14px}
+  .nav-wrap .brand::after{margin-left:14px}
+  .nav-wrap .nav-links{gap:8px}
+  .nav-wrap .nav-links a{padding-inline:8px}
+  .nav-wrap .nav-links a::after{right:8px;left:8px}
+}
+
 @media(max-width:700px){
-  .brand img{width:104px}
-  .nav-wrap .nav-links{background:#f4f1eb;color:#3f3a35;border-bottom-color:#d9d3c9;box-shadow:0 16px 32px #0003}
+  .nav{height:88px}
+  .brand img{width:116px}
+  .nav-wrap .brand::after{display:none}
+  .nav-wrap .nav-links{top:88px;gap:0;background:#f4f1eb;color:#3f3a35;border-bottom-color:#d9d3c9;box-shadow:0 16px 32px #0003}
+  .nav-wrap .nav-links a{padding:13px 10px}
+  .footer{align-items:flex-start;padding-block:36px 40px}
+  .footer .brand img{width:120px}
   .partner-list{grid-template-columns:1fr}
   .partner-card{height:118px}
 }
