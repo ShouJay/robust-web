@@ -86,9 +86,9 @@
 /* Supplied brand assets: Robust in site chrome, partner marks in the company profile. */
 .nav-wrap{
   position:relative;
-  background:linear-gradient(90deg,#f7f4ee 0%,#f1ede5 100%);
+  background:#fff;
   border-bottom:0;
-  box-shadow:0 10px 30px #00000017;
+  box-shadow:0 10px 30px #0000001a;
 }
 .nav-wrap::after{
   content:"";
@@ -98,7 +98,7 @@
   background:linear-gradient(90deg,transparent 4%,#f59e0b 28%,#f59e0b 72%,transparent 96%);
   opacity:.85;
 }
-.nav{height:108px}
+.nav{height:90px}
 .brand{flex:0 0 auto;position:relative}
 .nav-wrap .brand::after{
   content:"";
@@ -107,7 +107,7 @@
   margin-left:24px;
   background:linear-gradient(transparent,#f59e0b,transparent);
 }
-.brand img{width:142px;height:auto;object-fit:contain}
+.brand img{width:184px;height:auto;object-fit:contain}
 .nav-wrap .nav-links{gap:28px;color:#484039}
 .nav-wrap .nav-links a{
   position:relative;
@@ -140,10 +140,18 @@
   transform-origin:left;
   transition:transform .2s ease;
 }
-.nav-wrap .nav-links a:hover,
 .nav-wrap .nav-links [aria-current=page]{color:#9b5a00;background:#f59e0b10}
-.nav-wrap .nav-links a:hover::after,
 .nav-wrap .nav-links [aria-current=page]::after{transform:scaleX(1)}
+.nav-wrap .nav-links a:hover,
+.nav-wrap .nav-links a:focus-visible{color:#fff;background:#f59e0b}
+.nav-wrap .nav-links a:hover::before,
+.nav-wrap .nav-links a:focus-visible::before{color:#fff}
+.nav-wrap .nav-links a:hover::after,
+.nav-wrap .nav-links a:focus-visible::after{background:#fff;transform:scaleX(1)}
+.button:hover,
+.button:focus-visible{color:#fff;background:#f59e0b;border-color:#f59e0b}
+.button:hover span,
+.button:focus-visible span{color:#fff}
 .nav-wrap .nav-cta{
   color:#29241f;
   border-color:#d1882066;
@@ -151,17 +159,19 @@
   box-shadow:0 7px 20px #6e4a1814;
 }
 .nav-wrap .nav-cta span{color:#b76800}
-.nav-wrap .nav-cta:hover{
-  color:#17130f;
+.nav-wrap .nav-cta:hover,
+.nav-wrap .nav-cta:focus-visible{
+  color:#fff;
   background:#f59e0b;
   border-color:#f59e0b;
   box-shadow:0 9px 24px #b66e1c33;
 }
-.nav-wrap .nav-cta:hover span{color:#17130f}
+.nav-wrap .nav-cta:hover span,
+.nav-wrap .nav-cta:focus-visible span{color:#fff}
 .nav-wrap .menu-toggle{color:#29241f}
 .footer{
   position:relative;
-  padding-block:48px 50px;
+  padding-block:30px 32px;
   color:#29241f;
   background:#f4f1eb;
   border-top:0;
@@ -175,20 +185,21 @@
   height:3px;
   background:linear-gradient(90deg,transparent,#f59e0b,transparent);
 }
-.footer .brand img{width:132px}
+.footer .brand img{width:170px}
 .footer p{color:#6f675f;letter-spacing:.04em}
 .footer>a:last-child{color:#a05d00;font-weight:600;letter-spacing:.08em}
 .footer>a:last-child:hover{color:#d47b00}
 .partner-list{display:grid;grid-template-columns:repeat(3,minmax(110px,1fr));gap:14px;margin-top:25px;width:100%;min-width:0}
-.partner-card{width:100%;height:140px;min-width:0;padding:20px;border:1px solid #ded9d0;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.partner-card{width:100%;height:160px;min-width:0;padding:18px 20px 15px;border:1px solid #ded9d0;border-radius:10px;background:#fff;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:10px;align-items:center;justify-items:center;overflow:hidden}
 .partner-card img{display:block;width:auto!important;max-width:148px!important;height:64px!important;max-height:64px!important;object-fit:contain!important;transform:none}
 .partner-card-ciao img{height:76px!important;max-height:76px!important;transform:scale(1.2)}
 .partner-wordmark{font:600 18px/1.4 var(--display);letter-spacing:.05em;color:#26262b;text-align:center}
+.partner-name{width:100%;padding-top:9px;border-top:1px solid #ead7b9;color:#57514b;font:600 12px/1.4 var(--display);letter-spacing:.08em;text-align:center}
 .timeline-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
 .timeline-links a{color:var(--accent);text-decoration:underline;text-underline-offset:4px}
 
 @media(min-width:701px) and (max-width:900px){
-  .brand img{width:128px}
+  .brand img{width:152px}
   .nav{gap:14px}
   .nav-wrap .brand::after{margin-left:14px}
   .nav-wrap .nav-links{gap:8px}
@@ -200,10 +211,10 @@
   .nav{height:88px}
   .brand img{width:116px}
   .nav-wrap .brand::after{display:none}
-  .nav-wrap .nav-links{top:88px;gap:0;background:#f4f1eb;color:#3f3a35;border-bottom-color:#d9d3c9;box-shadow:0 16px 32px #0003}
+  .nav-wrap .nav-links{top:88px;gap:0;background:#fff;color:#3f3a35;border-bottom-color:#ead7b9;box-shadow:0 16px 32px #0003}
   .nav-wrap .nav-links a{padding:13px 10px}
   .footer{align-items:flex-start;padding-block:36px 40px}
   .footer .brand img{width:120px}
   .partner-list{grid-template-columns:1fr}
-  .partner-card{height:118px}
+  .partner-card{height:142px}
 }
