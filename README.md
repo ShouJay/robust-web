@@ -7,17 +7,19 @@
 - `dist/index.html`：首頁、Street Eye 介紹、2026 桃園交通調查計畫、聯絡入口。
 - `dist/journey.html`：公司介紹、核心團隊、服務能力、政府計畫、合作夥伴及 30 筆競賽成果。
 - `dist/traffic.html`：交通轉向量與六項成果、MOT／Re-ID 技術、連續影格、服務流程、實績及常見問題。
+- `dist/smart-home.html`：原始 `robustx_smart_home_g5.html` 智慧家居頁面，保留原版文案、版面與互動；頁首品牌改為 ROBUST，頁底使用既有公司 Logo，品牌與聯絡區可返回公司首頁。
+- `dist/smart-home.css`、`dist/smart-home.js`、`dist/assets/smart-home/`：由 g5 拆出的原始樣式、互動程式及 8 張圖片；與既有官網樣式隔離，無額外套件依賴。
 - `dist/dark.css`：原有品牌版型。
 - `dist/content.css`：本次內容頁與響應式版型。
 - `dist/app.js`：手機選單、Escape 收合、頁尾年份。
 - `dist/assets/brands/`：公司與合作夥伴 logo，供導覽、頁尾及合作夥伴品牌牆使用。
 - `dist/assets/street-eye/`：15 張交付圖片，保留原始解析度與圖例，可從頁面開啟原圖；其中 6 張已有修訂稿的圖表與報表採用 `edt` 版本。
 
-製作交接註記不作為公開文案。智慧居家與 AI 專案的基本底稿未製作公開頁面。過時的公開歷程下載文件已移除，舊版本仍保留於 Git 歷史。城市夜景為形象示意；實際分析圖均標示為示例。聯繫透過 mailto 與電話連結，沒有後端收件表單。
+製作交接註記不作為公開文案。過時的公開歷程下載文件已移除，舊版本仍保留於 Git 歷史。城市夜景為形象示意；實際分析圖均標示為示例。聯繫透過 mailto 與電話連結，沒有後端收件表單。智慧家居的諮詢表單維持 g5 原始行為：開啟郵件草稿或下載需求摘要，不會自動寄送或儲存資料。
 
 ## 本機預覽
 
-在 `site` 目錄執行：
+在儲存庫根目錄執行：
 
 ```sh
 python3 -m http.server 4173 --bind 127.0.0.1 --directory dist
@@ -27,11 +29,20 @@ python3 -m http.server 4173 --bind 127.0.0.1 --directory dist
 
 ## GitHub Pages 部署
 
-Git 儲存庫根目錄為 `site`，不是其上一層 `Robust-web`。部署工作流程位於 `.github/workflows/pages.yml`，推送 `main` 後會把 `dist` 發布至 GitHub Pages，也支援手動觸發。
+部署工作流程位於 `.github/workflows/pages.yml`，推送 `main` 後會把 `dist` 發布至 GitHub Pages，也支援手動觸發。智慧家居與公司官網使用同一個部署工作流程。
 
 首次部署需完成 GitHub 登入、建立或指定儲存庫、設定 Git remote，並在 GitHub 儲存庫 Settings → Pages → Build and deployment 選擇 GitHub Actions。工作流程依 [GitHub 官方說明](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages) 設定。
 
-目前僅完成本機網站與部署設定；尚未建立 GitHub 遠端、上傳或驗證公開網址。既有 `.openai/hosting.json` 保留原站識別，本次未對該託管服務發布。
+公開首頁為 https://robustx.tw/index.html，智慧家居入口為 https://robustx.tw/smart-home.html。沿用現有 GitHub Pages 網域設定與部署流程，無需新增服務或修改 DNS。既有 `.openai/hosting.json` 保留原站識別，本次未對該託管服務發布。
+
+## 智慧家居維護與檢查（2026-11-18）
+
+- 文字與結構：編輯 `dist/smart-home.html`；樣式與互動分別位於同名 CSS 與 JS。
+- 圖片：編輯 `dist/assets/smart-home/`；`smart-home.js` 開頭的 `ASSETS` 對應圖片路徑。
+- 共用導覽：`dist/app.js` 新增「03 智慧家居」，聯絡入口為「04」；`content.css` 在平板寬度使用既有收合選單以容納四個入口。
+- 更新共用 CSS／JS 時，同步調整三個既有 HTML 中的查詢版本號，避免舊快取遮蔽變更。智慧家居也有獨立查詢版本號。
+- 執行 `node scripts/check-site.cjs`，檢查四頁的本機連結、圖片、錨點、唯一 H1、JavaScript 語法與互動目標。
+- 本次瀏覽器工具無法完成視覺驗證；不將靜態檢查視為桌面／手機畫面或互動操作測試。
 
 ## 驗證
 

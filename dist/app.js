@@ -11,6 +11,7 @@ if (siteHeader) {
       <div class="nav-links" id="navigation">
         <a href="journey.html"${current('journey.html')}>公司介紹</a>
         <a href="traffic.html"${current('traffic.html')}>智慧交通分析</a>
+        <a href="smart-home.html"${current('smart-home.html')}>智慧家居</a>
         <a href="index.html#contact">聯絡我們</a>
       </div>
       <a class="button primary nav-cta" href="index.html#contact">洽詢專案<span aria-hidden="true">↗</span></a>

@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ROBUSTX 高端客製智慧家居系統，整合建築級照明、電動蛇行簾、空調與毫米波環境感知。以 Home Assistant 本地控制為核心，為台灣居所訂製從容優雅的智慧生活。" />
+  <meta name="theme-color" content="#f8f7f3" />
+  <title>ROBUSTX｜讓科技，隱形於生活 — 高端客製智慧家居系統</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23302f2a'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='34' fill='%23f8f7f3'%3ER%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="smart-home.css?v=20261118-1" />
+</head>
+<body>
+  <a class="skip" href="#main">跳至主要內容</a>
+
+  <header>
+    <a class="brand" href="https://robustx.tw/index.html" aria-label="Robust 羅伯斯特公司首頁">
+      ROBUST
+      <span>INTELLIGENT LIVING</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="主選單">
+      <button type="button" id="mega-trigger" aria-expanded="false" aria-controls="mega-menu">
+        <span data-i18n="nav_products">產品系統</span>
+        <span aria-hidden="true" style="font-size:10px;">▾</span>
+      </button>
+      <a href="#solutions" data-i18n="nav_solutions">整合方案</a>
+      <a href="#living" data-i18n="nav_living">生活情境</a>
+      <a href="#technology" data-i18n="nav_tech">智慧核心</a>
+      <a href="#projects" data-i18n="nav_projects">實績與夥伴</a>
+      <a href="#journal" data-i18n="nav_journal">專欄誌</a>
+    </nav>
+
+    <div class="header-actions">
+      <button type="button" id="lang-toggle" class="lang-btn" aria-label="切換中英文標題">繁中 / EN</button>
+      <a class="header-cta" href="#contact">
+        <span data-i18n="nav_cta">預約諮詢</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+      <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="開啟選單">☰</button>
+    </div>
+
+    <!-- Mega Menu -->
+    <div class="mega-menu" id="mega-menu" role="region" aria-label="產品與架構總覽">
+      <div class="mega-grid">
+        <div class="mega-col">
+          <p class="eyebrow">01 · Total Solution</p>
+          <ul>
+            <li><a href="#solutions" class="mega-link" data-detail="light">建築級防眩照明與青空燈</a></li>
+            <li><a href="#solutions" class="mega-link" data-detail="shade">電動蛇行簾與進口布料整合</a></li>
+            <li><a href="#solutions" class="mega-link" data-detail="control">台／歐規精品金屬開關面板</a></li>
+            <li><a href="#solutions" class="mega-link" data-detail="control">跨品牌變頻空調與家電中樞</a></li>
+          </ul>
+        </div>
+        <div class="mega-col">
+          <p class="eyebrow">02 · Core Architecture</p>
+          <ul>
+            <li><a href="#technology" class="mega-link">Home Assistant 本地運算核心</a></li>
+            <li><a href="#network-diagram" class="mega-link">對外斷網本地運作互動架構圖</a></li>
+            <li><a href="#architecture" class="mega-link">Zigbee / Matter 與雲端系統對比</a></li>
+            <li><a href="#solutions" class="mega-link">免拉雙切控制線配電革新</a></li>
+          </ul>
+        </div>
+        <div class="mega-col">
+          <p class="eyebrow">03 · Cases &amp; Service</p>
+          <ul>
+            <li><a href="#projects" class="mega-link">桃園青埔 京懋睿和簡宅</a></li>
+            <li><a href="#projects" class="mega-link">桃園青埔 京懋睿和徐宅</a></li>
+            <li><a href="#partners" class="mega-link">合作夥伴：僑寓室內設計</a></li>
+            <li><a href="#faq" class="mega-link">常見問題與預算時程評估</a></li>
+          </ul>
+        </div>
+        <div class="mega-feature">
+          <img data-asset="panel" alt="ROBUSTX 精品四鍵智慧開關面板" />
+          <div>
+            <p class="eyebrow" style="margin-bottom:6px;">Hardware Craft</p>
+            <h4>免改雙切線的精品面板</h4>
+            <p>支援台規／歐規盒型與電量回報，日後變更開關邏輯免敲牆改線。</p>
+            <button type="button" class="text-link mega-link" data-detail="control">檢視硬體規格 <span>↗</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" id="mobile-drawer" aria-label="行動版選單">
+    <a href="#solutions" class="mobile-link">整合方案 · Total Solution</a>
+    <a href="#technology" class="mobile-link">智慧核心 · Local First</a>
+    <a href="#living" class="mobile-link">生活情境 · Adaptive Living</a>
+    <a href="#projects" class="mobile-link">完工實績 · Completed Projects</a>
+    <a href="#journal" class="mobile-link">空間專欄誌 · Journal</a>
+    <a href="#contact" class="mobile-link" style="color:var(--terra);font-weight:600;">預約諮詢 · Cash 0986-327-014</a>
+  </div>
+
+  <main id="main">
+    <!-- 1. Hero (G1 Copy + G2 Image & Typography) -->
+    <div class="hero-wrap" id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <img data-asset="hero" alt="以木質、柔和採光與大面開窗構成的現代智慧客廳" fetchpriority="high" />
+        <div class="hero-shade"></div>
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="hero_eyebrow">FOR TODAY AND TOMORROW · 隱形管家與生活哲學</p>
+          <h1 id="hero-title" data-i18n="hero_title">真正的奢華，<br />是讓科技隱形於生活之中。</h1>
+          <p class="hero-sub" data-i18n="hero_sub">
+            讓空間學會思考，在您開口之前，一切已然就緒。匯聚歐美頂尖開源核心與台灣在地精品級全屋客製工藝，為層峰宅邸打造無需妥協的智慧生活標準。
+          </p>
+          <div class="hero-btns">
+            <a class="btn btn-cream" href="#contact">
+              <span data-i18n="hero_cta">預約私人體驗</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="btn btn-ghost" href="#solutions">
+              <span data-i18n="hero_sec">探索全屋方案</span>
+              <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+        </div>
+        <div class="hero-bottom">
+          <span>高端客製智慧家居系統 · ROBUSTX</span>
+          <a href="#philosophy">探索無感智慧 ↓</a>
+          <span>DESIGNED AROUND YOU</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- 2. Philosophy -->
+    <section class="pad" id="philosophy">
+      <div class="container intro-grid">
+        <p class="eyebrow" data-i18n="phil_eyebrow">A HOME THAT UNDERSTANDS YOU</p>
+        <div>
+          <h2 data-i18n="phil_title">生活的從容，<br />來自恰到好處的智慧。</h2>
+          <p class="intro-body">
+            市面多數智慧產品，僅是將牆上的開關搬進手機裡；真正的智慧宅邸，是以去識別化感應器代替您的感官感知時空變化，讓系統學習您的作息與習慣後主動配合您，不再需要繁瑣操作。
+          </p>
+          <p class="intro-body">
+            我們採用全球排名第一的開源智慧系統 <strong>Home Assistant</strong>（由荷蘭工程師 Paulus Schoutsen 創立，並由瑞士非營利組織 <strong>Open Home Foundation</strong> 長期治理）作為技術底座，由台灣專屬工程團隊針對本土建築水電規範與濕熱氣候深度調校，讓頂尖科技化繁為簡——保留您熟悉的實體開關手感，同時賦予居所跨品牌整合能力。
+          </p>
+          <p class="fine" style="letter-spacing:0.06em;">國際智慧系統架構 × 台灣在地客製 × 空間整合美學</p>
+
+          <div class="kpi-strip">
+            <div class="kpi-item">
+              <div class="kpi-val">100%</div>
+              <div class="kpi-label">核心自動化本地端運算，斷網仍可運作</div>
+            </div>
+            <div class="kpi-item">
+              <div class="kpi-val">免改雙切</div>
+              <div class="kpi-label">簡化水電控制迴路，邏輯調整免敲牆</div>
+            </div>
+            <div class="kpi-item">
+              <div class="kpi-val">0 鏡頭</div>
+              <div class="kpi-label">毫米波感應技術，零侵犯居家隱私</div>
+            </div>
+            <div class="kpi-item">
+              <div class="kpi-val">一鍵整合</div>
+              <div class="kpi-label">跨品牌冷氣、家電、遮陽與照明</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Solutions (Consolidated 3-Card Layout: Panel craft integrated into Card 03) -->
+    <section class="solutions pad" id="solutions">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">ONE HOME. ONE COMPLETE VISION.</p>
+            <h2>一個家，完整的想像。</h2>
+          </div>
+          <p class="lead">從見光不見燈的光場設計、進口布料電動遮陽到精品開關面板，提供從平面規劃、水電對接至調校交付的完整方案。</p>
+        </div>
+
+        <div class="solution-grid">
+          <article class="sol-card">
+            <div>
+              <button type="button" class="image-button" data-detail="light" aria-label="探索建築級智慧照明方案">
+                <img data-asset="light" alt="間接照明與木質牆面營造溫暖的居家光場" loading="lazy" />
+                <span>01 / ARCHITECTURAL LIGHTING</span>
+              </button>
+              <div class="card-title">
+                <h3>光影，有自己的節奏。</h3>
+                <button type="button" class="card-plus" data-detail="light" aria-label="開啟照明規格詳細說明">＋</button>
+              </div>
+              <p>透過牆面垂直照度與深杯防眩光學，打造「見光不見燈」的柔和光場。支援 55~150mm 筒燈、磁吸軌道與無窗空間青空燈。</p>
+            </div>
+            <button type="button" class="text-link" data-detail="light">查看照明產品規格 <span>↗</span></button>
+          </article>
+
+          <article class="sol-card">
+            <div>
+              <button type="button" class="image-button" data-detail="shade" aria-label="探索全自動智慧遮陽方案">
+                <img data-asset="curtain" alt="自然採光灑落在柔和中性色的居家空間" loading="lazy" />
+                <span>02 / MOTORIZED SHADING</span>
+              </button>
+              <div class="card-title">
+                <h3>收藏天光，也保有私密。</h3>
+                <button type="button" class="card-plus" data-detail="shade" aria-label="開啟遮陽規格詳細說明">＋</button>
+              </div>
+              <p>整合大中小蛇行布紗簾、調光斑馬簾與隔熱蜂巢簾。支援設計師指定進口布料客製、輕拉啟動與停電手拉功能。</p>
+            </div>
+            <button type="button" class="text-link" data-detail="shade">探索遮陽與布料客製 <span>↗</span></button>
+          </article>
+
+          <article class="sol-card">
+            <div>
+              <button type="button" class="image-button" data-detail="control" aria-label="探索精品面板與全屋家電整合方案">
+                <img data-asset="panel" alt="ROBUSTX 精品金屬四鍵智慧開關面板與全屋整合" loading="lazy" />
+                <span>03 / TACTILE &amp; CONNECT</span>
+              </button>
+              <div class="card-title">
+                <h3>設備各有專長，生活自成一體。</h3>
+                <button type="button" class="card-plus" data-detail="control" aria-label="開啟面板與整合規格詳細說明">＋</button>
+              </div>
+              <p>提供台／歐規金屬與玻璃精品面板，免拉繁瑣雙切控制線並支援「一鍵全關（保留冰箱除濕機）」。同步串接日系變頻空調、掃地機與 Siri 語音。</p>
+            </div>
+            <button type="button" class="text-link" data-detail="control">檢視面板與家電整合 <span>↗</span></button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Technology + Integrated Local-First Network Diagram + 3-Way Comparison -->
+    <section class="pad" id="technology">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">QUIET ON THE OUTSIDE. INTELLIGENT WITHIN.</p>
+            <h2>看不見的核心，<br />感受得到的安心。</h2>
+          </div>
+          <p class="lead">以 Home Assistant 為整合核心，讓居家的決策留在家中，不依賴單一品牌或遠端雲端。</p>
+        </div>
+
+        <div class="tech-grid">
+          <article>
+            <span class="tech-number">01 — LOCAL FIRST</span>
+            <h3>本地運算，少一分依賴。</h3>
+            <p>已配置為本地控制的燈光、窗簾與自動化，可在對外網路中斷時持續運作，日常操作不必繞道海外伺服器。</p>
+          </article>
+          <article>
+            <span class="tech-number">02 — PRIVACY BY DESIGN</span>
+            <h3>零攝影機，不採集影像。</h3>
+            <p>嚴格不依賴室內攝影機，改以毫米波存在感應、照度與溫濕度作為觸發依據，靜坐閱讀或熟睡皆能精準感知。</p>
+          </article>
+          <article>
+            <span class="tech-number">03 — OPEN &amp; CONNECTED</span>
+            <h3>跨越品牌，保留選擇。</h3>
+            <p>運用 Zigbee、Matter 與開放協定串聯不同品牌空調與家電。並整合煙霧、CO 與瓦斯感應，緊急時提供燈光逃生指引。</p>
+          </article>
+        </div>
+
+        <div class="arch-band" id="architecture">
+          <div class="arch-head">
+            <div>
+              <p class="eyebrow" style="color:#e5b79f;margin-bottom:8px;">100% LOCAL CONTROL · ARCHITECTURE</p>
+              <h3>您的居家隱私，不該存放在別人的雲端。</h3>
+            </div>
+            <p class="arch-sub">
+              傳統 Wi-Fi 與雲端智慧家電需繞道海外伺服器，尖峰時段易延遲或斷線。我們以 Zigbee 與最新國際標準 Matter 網狀網路為主力，所有邏輯運算 100% 留存家中本地主機。
+            </p>
+          </div>
+
+          <!-- Integrated Interactive Network Block Diagram (adapted from ROBUSTX-Review-v2) -->
+          <div class="net-box" id="network-diagram">
+            <div class="net-info">
+              <p class="eyebrow" style="color:#e5b79f;margin-bottom:10px;">EXPLORE THE CONNECTION</p>
+              <h4>對外斷網時，<br />哪些功能可以繼續？</h4>
+              <div class="net-switch" role="group" aria-label="網路狀態示意">
+                <button type="button" data-network="online" aria-pressed="true">外網連線</button>
+                <button type="button" data-network="offline" aria-pressed="false">外網中斷</button>
+              </div>
+              <p id="network-description" aria-live="polite">家中控制主機協調已配置的本地設備；遠端存取與外部資料服務依需要連線。</p>
+              <p class="fine" style="color:#a7a399;margin:0;">此為架構示意，不是即時偵測；實際運作仍須家中供電、主機與區域網路正常。</p>
+            </div>
+
+            <div class="net-diagram">
+              <div class="device-row">
+                <span>環境感應器</span>
+                <span>牆面開關</span>
+                <span>手機介面</span>
+              </div>
+              <div class="diagram-line">↓　家中區域網路　↓</div>
+              <div class="local-hub">
+                <span>HOME ASSISTANT</span>
+                <strong>家中控制主機</strong>
+                <small>自動化規則 · 場景協調</small>
+              </div>
+              <div class="diagram-line">↓　本地直接連動　↓</div>
+              <div class="device-row">
+                <span>建築照明</span>
+                <span>電動窗簾</span>
+                <span>相容空調</span>
+              </div>
+              <div class="cloud-path" id="cloud-path">
+                <span class="connection-dot"></span>
+                <span id="cloud-label">外部服務可連線</span>
+                <small>遠端 App 存取 · 氣象預報 · 部分品牌雲端服務</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3-Way Comparison Matrix -->
+          <div class="arch-tabs" role="tablist" aria-label="篩選系統架構對比">
+            <button type="button" class="arch-tab active" data-arch="all">完整三方對比</button>
+            <button type="button" class="arch-tab" data-arch="robustx">ROBUSTX (HA + Zigbee/Matter)</button>
+            <button type="button" class="arch-tab" data-arch="wifi">傳統 Wi-Fi / 單一品牌雲端</button>
+            <button type="button" class="arch-tab" data-arch="homekit">Apple HomeKit</button>
+          </div>
+
+          <div class="table-scroll">
+            <table class="comp-table">
+              <thead>
+                <tr>
+                  <th>比較維度</th>
+                  <th class="col-robustx">ROBUSTX（HA 核心 + 本地協定）</th>
+                  <th class="col-wifi">傳統 Wi-Fi / 單一品牌雲端</th>
+                  <th class="col-homekit">Apple HomeKit 生態</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="dim">訊號傳輸路徑</td>
+                  <td class="col-robustx">本地優先：感應器 → 家中本地主機 → 目標裝置，日常連動不繞道外網。</td>
+                  <td class="col-wifi">多數需經由外部品牌伺服器轉發，受限於寬頻與雲端狀態。</td>
+                  <td class="col-homekit">需依賴 HomePod / Apple TV 作為家庭中樞，遠端與部分服務仍需連網。</td>
+                </tr>
+                <tr>
+                  <td class="dim">斷網運作能力</td>
+                  <td class="col-robustx">已設為本地控制的開關、感應與自動化，在對外斷網時仍可正常運作。</td>
+                  <td class="col-wifi">外網中斷或廠商伺服器維護時，自動化與遠端控制易停擺。</td>
+                  <td class="col-homekit">部分本地自動化可運作，但跨服務連動與遠端存取受限。</td>
+                </tr>
+                <tr>
+                  <td class="dim">穿牆與擴充性</td>
+                  <td class="col-robustx">Zigbee / Thread Mesh 具中繼轉發特性（依現場建材規劃配置）。</td>
+                  <td class="col-wifi">Wi-Fi 設備過多易造成路由器負載，穿牆衰減較明顯。</td>
+                  <td class="col-homekit">受限於家中 Wi-Fi 與藍牙覆蓋，邊緣房間偶發無回應。</td>
+                </tr>
+                <tr>
+                  <td class="dim">跨品牌整合</td>
+                  <td class="col-robustx">整合大金、日立、三菱等空調、電動窗簾、照明與紅外線家電於單一邏輯。</td>
+                  <td class="col-wifi">封閉生態系，常需安裝多個 App，跨品牌設備難以深度連動。</td>
+                  <td class="col-homekit">僅支援特定認證設備，台灣常見日系變頻空調原生支援較少。</td>
+                </tr>
+                <tr>
+                  <td class="dim">水電與維護彈性</td>
+                  <td class="col-robustx">無線多控免拉複雜雙切線；日後修改按鍵邏輯可透過軟體調整。</td>
+                  <td class="col-wifi">設備待機耗電較高，更換路由器或密碼時需逐一重新配對。</td>
+                  <td class="col-homekit">相容硬體選擇較有限，水電配電簡化彈性較低。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <details style="margin-top:28px;border-bottom:1px solid var(--line);">
+          <summary>深入了解：本地控制的實務邊界、消防備援與設備相容性說明 <span>＋</span></summary>
+          <div class="ans">
+            <p>1. <strong>本地運作條件：</strong>本地控制仍需家中市電與區域網路正常；斷網不等於停電備援。遠端 App 存取、氣象預報連動與部分語音服務仍需網際網路。</p>
+            <p>2. <strong>通訊協定與現場驗證：</strong>Matter 可透過 Thread 或 Wi-Fi 運作，Zigbee 覆蓋亦受鋼筋水泥建材與干擾影響，所有點位皆須於現場勘驗與測試後確認。</p>
+            <p>3. <strong>安全感應定位：</strong>智慧煙霧、一氧化碳與燈光閃爍逃生指引屬輔助提醒機制，既有建築消防設備仍應依現行法規標準配置。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 5. Living Scenarios (Minimalist Review-v2 3-Row List + G2 Underline 2-Line Tabs + 1920x1080 Full-Viewport Fit) -->
+    <section class="living" id="living">
+      <div class="living-visual" id="living-visual">
+        <img data-asset="bedroom" id="scene-image" alt="讓晨光，比鬧鐘先說早安。 情境示意" loading="lazy" />
+        <div class="living-shade"></div>
+        <span class="image-caption">LIVING SCENARIOS / 情境示意</span>
+        <div class="scene-clock" id="scene-time">
+          07:00
+          <span>A GENTLE BEGINNING</span>
+        </div>
+      </div>
+
+      <div class="living-content">
+        <div class="living-eyebrow-row">
+          <p class="eyebrow">IN RHYTHM WITH YOUR LIFE</p>
+        </div>
+        <h2>家的節奏，<br />跟著您走。</h2>
+        <p class="living-lead">點選下方生活時刻，感受光影、窗簾與室溫如何隨日常無聲協同；進階自適應參數詳見專欄誌。</p>
+
+        <div class="scene-tabs" role="tablist" aria-label="探索六大生活情境">
+          <button type="button" role="tab" id="tab-0" aria-selected="true" aria-controls="scene-panel" data-scene="0">
+            <span class="sc-num">01 MORNING</span>
+            <span class="sc-zh">晨間喚醒模式</span>
+          </button>
+          <button type="button" role="tab" id="tab-1" aria-selected="false" aria-controls="scene-panel" data-scene="1" tabindex="-1">
+            <span class="sc-num">02 AWAY</span>
+            <span class="sc-zh">離家守護模式</span>
+          </button>
+          <button type="button" role="tab" id="tab-2" aria-selected="false" aria-controls="scene-panel" data-scene="2" tabindex="-1">
+            <span class="sc-num">03 CINEMA</span>
+            <span class="sc-zh">劇院觀影模式</span>
+          </button>
+          <button type="button" role="tab" id="tab-3" aria-selected="false" aria-controls="scene-panel" data-scene="3" tabindex="-1">
+            <span class="sc-num">04 NIGHT</span>
+            <span class="sc-zh">深夜舒眠與起夜</span>
+          </button>
+          <button type="button" role="tab" id="tab-4" aria-selected="false" aria-controls="scene-panel" data-scene="4" tabindex="-1">
+            <span class="sc-num">05 ECO</span>
+            <span class="sc-zh">智慧節能模式</span>
+          </button>
+          <button type="button" role="tab" id="tab-5" aria-selected="false" aria-controls="scene-panel" data-scene="5" tabindex="-1">
+            <span class="sc-num">06 GUEST</span>
+            <span class="sc-zh">訪客／派對模式</span>
+          </button>
+        </div>
+
+        <div id="scene-panel" role="tabpanel" aria-labelledby="tab-0" tabindex="0">
+          <h3 id="scene-title">讓晨光，比鬧鐘先說早安。</h3>
+          <p id="scene-description">窗簾緩緩開啟，暖光漸亮，空調調至預設的舒適溫度。讓一天從自然、柔和的喚醒開始。</p>
+          <ul id="scene-settings">
+            <li><span>窗簾</span><strong>漸進開啟</strong></li>
+            <li><span>燈光</span><strong>柔和漸亮</strong></li>
+            <li><span>空調</span><strong>舒適預設</strong></li>
+          </ul>
+        </div>
+
+        <p class="fine" style="margin:0;">互動展示為情境示意；實際連動依選用設備與客製設定規劃。</p>
+      </div>
+    </section>
+
+    <!-- 6. Approach -->
+    <section class="pad" id="approach">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">PERSONAL BY NATURE</p>
+            <h2>從您的生活，開始訂製。</h2>
+          </div>
+          <p class="lead">為屋主，也為室內設計師與建築師夥伴。從需求討論到場景調校，讓想像穩妥落地。</p>
+        </div>
+
+        <div class="steps">
+          <article>
+            <span>01</span>
+            <h3>傾聽日常</h3>
+            <p>了解家庭成員、生活作息與空間痛點，釐清真正需要自動化的情境。</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>整合設計</h3>
+            <p>結合平面圖、燈光配置、窗簾盒尺寸與水電條件，確認設備選型與相容性。</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>安裝與調校</h3>
+            <p>完成設備整合與控制介面設定，依實際居住動線測試感應靈敏度與場景邏輯。</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>交付生活</h3>
+            <p>說明日常操作與手動備援方式，並於提案中明確確認後續維護與服務安排。</p>
+          </article>
+        </div>
+
+        <div class="depth-grid">
+          <article class="depth-card">
+            <div>
+              <p class="eyebrow">FOR DESIGNERS &amp; ARCHITECTS</p>
+              <h3>設計師聯合提案與客製對接</h3>
+              <p class="desc">提供完整水電迴路簡化建議、預留窗簾盒尺寸規範與進口布料電機客製，讓美學設計與工程落地一次到位。</p>
+            </div>
+            <a class="text-link" href="#contact" data-role="設計師 / 建築師">索取設計師技術手冊 <span>→</span></a>
+          </article>
+
+          <article class="depth-card">
+            <div>
+              <p class="eyebrow">COMMERCIAL &amp; CONTRACT</p>
+              <h3>頂級建案與商空專案整合</h3>
+              <p class="desc">為精品飯店、私人會所與豪宅建案提供穩定可靠的本地端自動化方案，兼顧分區能耗管理與極致空間氛圍。</p>
+            </div>
+            <a class="text-link" href="#contact" data-role="建商 / 商空專案">洽談商空專案合作 <span>→</span></a>
+          </article>
+
+          <article class="depth-card dark-card">
+            <div>
+              <p class="eyebrow">VISIT US · PRIVATE SHOWROOM</p>
+              <h3>預約一對一私人體驗空間</h3>
+              <p class="desc">親手觸摸金屬與玻璃開關面板質感，實測見光不見燈的無眩光場與靜音蛇行簾的毫秒級連動體驗。</p>
+            </div>
+            <a class="text-link" href="#contact" data-role="私人屋主 / 業主">立即預約 CASH 專屬導覽 <span>→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Completed Projects & Partners -->
+    <section class="projects pad" id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">COMPLETED RESIDENCES · 完工實績</p>
+            <h2>走進真實落地的智慧宅邸</h2>
+          </div>
+          <p class="lead">精選桃園青埔指標建案客製實績，從預售客變到調校交付，實現隱形於建築美學中的日常便利。</p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="proj-card">
+            <img data-asset="case_jian" alt="桃園青埔 京懋睿和簡宅 智慧客廳空間實景示意" loading="lazy" />
+            <div class="proj-body">
+              <div>
+                <p class="eyebrow" style="margin-bottom:8px;">TAOYUAN QINGPU · RESIDENCE 01</p>
+                <h3>桃園青埔｜京懋睿和簡宅</h3>
+                <p>
+                  全室導入本地端智慧家居系統，涵蓋全屋照明、電動窗簾／捲簾／斑馬簾、智慧開關與全區環境感應器；深度整合日立變頻空調、除濕機、全室換氣系統、科沃斯掃地機器人、智慧門鎖與連網電視，並讓傳統無連網吊扇與電扇同步納入自動化。同時配置門窗、震動、瓦斯、CO、甲烷、甲醛、PM2.5 與 CO₂ 感測警報及空調／除濕／燈具／窗簾分區電力監控，搭配 Apple HomePod mini 實現全屋分區語音聲控。
+                </p>
+              </div>
+              <div class="proj-tags">
+                <span>全室照明／捲簾／斑馬簾</span>
+                <span>日立空調除濕／全室換氣</span>
+                <span>傳統吊扇電扇整合</span>
+                <span>八合一空氣與防災警報</span>
+                <span>分區電力監控</span>
+                <span>HomePod mini 分區聲控</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <img data-asset="case_hsu" alt="桃園青埔 京懋睿和徐宅 暮光餐廚與智慧面板實景示意" loading="lazy" />
+            <div class="proj-body">
+              <div>
+                <p class="eyebrow" style="margin-bottom:8px;">TAOYUAN QINGPU · RESIDENCE 02</p>
+                <h3>桃園青埔｜京懋睿和徐宅</h3>
+                <p>於木質天花與開放式餐客廳配置多區無段調光、精品金屬開關面板與跨品牌空調雙向整合，兼顧高齡長輩直覺按鍵手感與自動化生活節奏。</p>
+              </div>
+              <div class="proj-tags">
+                <span>精品多鍵面板</span>
+                <span>免拉雙切配電</span>
+                <span>空調雙向整合</span>
+                <span>Siri 語音橋接</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="partner-band" id="partners">
+          <div class="partner-logo-wrap">
+            <img data-asset="partner_ciao" alt="僑寓室內設計 CIAO ARCHITECTURE · INTERIOR 標誌" loading="lazy" />
+            <div class="partner-info">
+              <p class="eyebrow" style="margin-bottom:6px;">STRATEGIC DESIGN PARTNER · 合作夥伴</p>
+              <h3>僑寓室內設計｜CIAO ARCHITECTURE · INTERIOR</h3>
+              <p>攜手僑寓室內設計團隊，於空間規劃初期即共同對接燈光迴路、窗簾盒預留與開關面板材質，讓智慧系統與室內美學無縫共生。</p>
+            </div>
+          </div>
+          <a class="text-link" href="#contact" data-role="設計師 / 建築師">預約聯合設計諮詢 <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Journal (6 Articles: Includes New 6-Scene + AI Learning Deep-Dive & 24H Safety Guidance) -->
+    <section class="journal pad" id="journal">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">NEWS AND INSIGHTS</p>
+            <h2>空間美學與工程專欄誌</h2>
+          </div>
+          <p class="lead">點擊文章卡片閱讀完整內容，深入探索光影設計、情境邏輯與 AI 學習、24H 防災逃生引導與水電工藝革新。</p>
+        </div>
+        <div class="journal-grid" id="journal-grid"></div>
+      </div>
+    </section>
+
+    <!-- 9. FAQ -->
+    <section class="faq pad" id="faq">
+      <div class="container">
+        <p class="eyebrow">THOUGHTFULLY ANSWERED</p>
+        <h2>關於理想的家，您可能想問。</h2>
+        <details>
+          <summary>已經裝潢好的家，也可以規劃嗎？ <span>＋</span></summary>
+          <div class="ans"><p>可以先從照明、窗簾或特定生活情境評估。既有配線、零線、開關盒尺寸、窗簾電源與設備型號，會影響可採用的方案；我們會先確認現場條件，再提出適合的整合範圍。</p></div>
+        </details>
+        <details>
+          <summary>家人不習慣用手機，操作會很複雜嗎？ <span>＋</span></summary>
+          <div class="ans"><p>規劃可保留實體開關，將常用動作整合為單一按鍵，或依人員活動自動觸發。手機介面與語音是額外的操作選擇，實際設定依家人的習慣決定。</p></div>
+        </details>
+        <details>
+          <summary>如何估算預算與施工時間？ <span>＋</span></summary>
+          <div class="ans"><p>費用與時程取決於空間大小、控制迴路、窗簾數量、設備選型及客製程度。提供平面圖、裝修階段與想實現的生活情境後，可進一步討論範圍與報價。</p></div>
+        </details>
+        <details>
+          <summary>如果未來想更改開關對應的燈具，需要重新拉線嗎？ <span>＋</span></summary>
+          <div class="ans"><p>透過我們的無線智慧開關與本地邏輯架構，日後想調整按鍵對應的燈區或情境，只需透過系統軟體重新指派即可，無須敲牆改線。</p></div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 10. Contact -->
+    <section class="contact pad" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <p class="eyebrow">LET'S CREATE YOUR WAY OF LIVING</p>
+          <h2>為您的理想居所，<br />訂製智慧的靈魂。</h2>
+          <p style="font-size:15px;line-height:1.95;color:#3d3a34;">
+            帶著平面圖，或只是一個對家的想像。無論您是私人屋主、室內設計師或建案夥伴，歡迎與專屬顧問聯繫討論。
+          </p>
+
+          <div class="contact-card">
+            <div class="contact-row">
+              <div>
+                <span class="fine" style="display:block;letter-spacing:0.12em;">PRINCIPAL CONSULTANT</span>
+                <strong style="font-family:var(--serif);font-size:24px;">Cash</strong>
+              </div>
+              <span class="fine" style="background:var(--paper-warm);padding:4px 10px;border:1px solid var(--line);">台灣區專屬顧問</span>
+            </div>
+            <div class="contact-row">
+              <div>
+                <span class="fine" style="display:block;">行動電話 / Line 諮詢</span>
+                <a href="tel:0986327014" style="font-size:17px;font-weight:500;">0986-327-014</a>
+              </div>
+              <button type="button" class="copy-btn" data-copy="0986327014" data-msg="已複製電話 0986327014">複製</button>
+            </div>
+            <div class="contact-row">
+              <div>
+                <span class="fine" style="display:block;">電子郵件</span>
+                <a href="mailto:cash@robustx.com.tw" style="font-size:17px;font-weight:500;">cash@robustx.com.tw</a>
+              </div>
+              <button type="button" class="copy-btn" data-copy="cash@robustx.com.tw" data-msg="已複製 Email cash@robustx.com.tw">複製</button>
+            </div>
+          </div>
+        </div>
+
+        <form class="form-box" id="consult-form">
+          <p class="eyebrow" style="margin-bottom:14px;">您的身份 / 專案角色 *</p>
+          <div class="role-grid">
+            <label class="role-option">
+              <input type="radio" name="role" value="設計師 / 建築師" checked />
+              <div class="role-pill">設計師 / 建築師</div>
+            </label>
+            <label class="role-option">
+              <input type="radio" name="role" value="私人屋主 / 業主" />
+              <div class="role-pill">私人屋主 / 業主</div>
+            </label>
+            <label class="role-option">
+              <input type="radio" name="role" value="建商 / 商空專案" />
+              <div class="role-pill">建商 / 商空專案</div>
+            </label>
+            <label class="role-option">
+              <input type="radio" name="role" value="經銷 / 合作夥伴" />
+              <div class="role-pill">經銷 / 合作夥伴</div>
+            </label>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="f-name">姓名 / 稱呼 *</label>
+              <input id="f-name" name="name" type="text" required maxlength="80" autocomplete="name" placeholder="例如：林小姐 / 陳設計師" />
+            </div>
+            <div class="field">
+              <label for="f-phone">聯絡電話 *</label>
+              <input id="f-phone" name="phone" type="tel" required autocomplete="tel" placeholder="09XX-XXX-XXX" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="f-email">E-mail *</label>
+              <input id="f-email" name="email" type="email" required autocomplete="email" placeholder="name@example.com" />
+            </div>
+            <div class="field">
+              <label for="f-stage">目前空間進度</label>
+              <select id="f-stage" name="stage">
+                <option value="預售屋客變／設計規劃中">預售屋客變／設計規劃中</option>
+                <option value="即將進入水電配線階段">即將進入水電配線階段</option>
+                <option value="舊屋翻新／局部智慧升級">舊屋翻新／局部智慧升級</option>
+                <option value="設計師／建商長期配合洽談">設計師／建商長期配合洽談</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-message">空間坪數或需求簡述</label>
+            <textarea id="f-message" name="message" rows="3" maxlength="3000" placeholder="例如：希望整合全室大金空調、電動蛇行簾與防眩照明，預約私人展示空間體驗…"></textarea>
+          </div>
+
+          <p class="fine" style="margin-bottom:14px;">
+            我們尊重您的隱私，所有諮詢僅供專案規劃聯繫使用。送出後將開啟郵件草稿寄給 Cash，或可一鍵下載需求摘要。
+          </p>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-dark">送出預約諮詢（開啟郵件草稿） <span>↗</span></button>
+            <button type="button" class="btn" id="download-brief" style="border:1px solid var(--ink);">下載需求摘要 (.txt) <span>↓</span></button>
+          </div>
+          <p class="status-msg" id="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- 11. Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="https://robustx.tw/index.html" aria-label="Robust 羅伯斯特公司首頁" style="color:#f0efe9;">
+          <img class="company-logo" src="assets/brands/robust.png" alt="Robust 羅伯斯特" width="184" />
+          <span style="color:#b9beaf;">SMART LIVING · TAIWAN</span>
+        </a>
+        <p style="font-size:13px;color:#c6cabc;margin-top:16px;line-height:1.85;">
+          歐美頂尖開源核心 × 台灣在地精品級全屋客製智慧家居系統。
+        </p>
+      </div>
+      <div>
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="#solutions">建築級智慧照明</a></li>
+          <li><a href="#solutions">全自動智慧遮陽</a></li>
+          <li><a href="#solutions">精品開關面板</a></li>
+          <li><a href="#solutions">跨品牌家電整合</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Architecture</h4>
+        <ul>
+          <li><a href="#technology">Home Assistant 核心</a></li>
+          <li><a href="#network-diagram">斷網本地運作架構</a></li>
+          <li><a href="#architecture">Zigbee / Matter Mesh</a></li>
+          <li><a href="#projects">完工實績與合作夥伴</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://robustx.tw/index.html">羅伯斯特公司首頁 ↗</a></li>
+          <li>專屬顧問：Cash</li>
+          <li>電話：<a href="tel:0986327014">0986327014</a></li>
+          <li>Email：<a href="mailto:cash@robustx.com.tw">cash@robustx.com.tw</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ROBUSTX Smart Living. All rights reserved.</span>
+      <button type="button" id="privacy-open">網站隱私說明</button>
+      <span>100% Local Control · Open Home Foundation Architecture</span>
+    </div>
+  </footer>
+
+  <dialog id="detail-dialog" aria-labelledby="detail-title">
+    <button type="button" class="close" id="dialog-close" aria-label="關閉視窗">✕</button>
+    <p class="eyebrow" id="detail-tag"></p>
+    <h2 id="detail-title"></h2>
+    <div id="detail-body"></div>
+    <a class="btn btn-dark" href="#contact" id="detail-contact" style="margin-top:20px;">預約討論我的需求 <span>↗</span></a>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="smart-home.js?v=20261118-1"></script>
+</body>
+</html>
