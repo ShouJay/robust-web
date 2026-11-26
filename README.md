@@ -7,8 +7,8 @@
 - `dist/index.html`：首頁、Street Eye 介紹、2026 桃園交通調查計畫、聯絡入口。
 - `dist/journey.html`：公司介紹、核心團隊、服務能力、政府計畫、合作夥伴及 30 筆競賽成果。
 - `dist/traffic.html`：交通轉向量與六項成果、MOT／Re-ID 技術、連續影格、服務流程、實績及常見問題。
-- `dist/smart-home.html`：原始 `robustx_smart_home_g5.html` 智慧家居頁面，保留原版文案、版面與互動；頁首品牌改為 ROBUST，頁底使用既有公司 Logo，品牌與聯絡區可返回公司首頁。
-- `dist/smart-home.css`、`dist/smart-home.js`、`dist/assets/smart-home/`：由 g5 拆出的原始樣式、互動程式及 8 張圖片；與既有官網樣式隔離，無額外套件依賴。
+- `dist/smart-home.html`：ROBUSTX 智慧家居系統旗艦頁（v2.0 Quiet Luxury 改版，詳見 `CHANGELOG.md`），提供全站繁中／英文雙語切換、互動式家屋剖面斷網藍圖、五維系統對比、六大生活情境滿版模擬、完工實績與六篇專欄誌；頁首品牌與頁底使用既有公司 Logo，可返回公司首頁。
+- `dist/smart-home.css`、`dist/smart-home-i18n.js`、`dist/smart-home.js`、`dist/assets/smart-home/`：智慧家居頁之獨立樣式、全站雙語辭典模組、互動程式及最佳化攝影素材；與既有官網樣式隔離，無建置依賴。
 - `dist/dark.css`：原有品牌版型。
 - `dist/content.css`：本次內容頁與響應式版型。
 - `dist/app.js`：手機選單、Escape 收合、頁尾年份。
@@ -35,14 +35,14 @@ python3 -m http.server 4173 --bind 127.0.0.1 --directory dist
 
 公開首頁為 https://robustx.tw/index.html，智慧家居入口為 https://robustx.tw/smart-home.html。沿用現有 GitHub Pages 網域設定與部署流程，無需新增服務或修改 DNS。既有 `.openai/hosting.json` 保留原站識別，本次未對該託管服務發布。
 
-## 智慧家居維護與檢查（2026-11-18）
+## 智慧家居維護與檢查（2026-11-26 v2.0 更新）
 
-- 文字與結構：編輯 `dist/smart-home.html`；樣式與互動分別位於同名 CSS 與 JS。
-- 圖片：編輯 `dist/assets/smart-home/`；`smart-home.js` 開頭的 `ASSETS` 對應圖片路徑。
-- 共用導覽：`dist/app.js` 新增「03 智慧家居」，聯絡入口為「04」；`content.css` 在平板寬度使用既有收合選單以容納四個入口。
-- 更新共用 CSS／JS 時，同步調整三個既有 HTML 中的查詢版本號，避免舊快取遮蔽變更。智慧家居也有獨立查詢版本號。
-- 執行 `node scripts/check-site.cjs`，檢查四頁的本機連結、圖片、錨點、唯一 H1、JavaScript 語法與互動目標。
-- 本次瀏覽器工具無法完成視覺驗證；不將靜態檢查視為桌面／手機畫面或互動操作測試。
+- 變更紀錄：完整改版內容與跨團隊同步清單請參閱 [CHANGELOG.md](CHANGELOG.md)。
+- 文字與結構：中文結構與預設文案位於 `dist/smart-home.html`；英文翻譯與動態資料集（情境、規格彈窗、專欄全文、對比矩陣）集中管理於 `dist/smart-home-i18n.js`；樣式與互動位於 `dist/smart-home.css`、`dist/smart-home.js`。
+- 圖片：位於 `dist/assets/smart-home/`。
+- 共用導覽：`dist/app.js` 維持「03 智慧家居」，聯絡入口為「04」；`content.css` 在平板寬度使用既有收合選單以容納四個入口。
+- 更新共用 CSS／JS 時，同步調整 HTML 中的查詢版本號（目前智慧家居為 `?v=20261126-2`），避免舊快取遮蔽變更。
+- 執行 `node scripts/check-site.cjs`，檢查四頁的本機連結、圖片、錨點、唯一 H1、JavaScript 語法、100% 中英雙語鍵值覆蓋與互動目標。
 
 ## 驗證
 
